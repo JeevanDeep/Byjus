@@ -1,12 +1,13 @@
-package com.jeevan.byjus
+package com.jeevan.byjus.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.jeevan.byjus.R
 
-class MainActivity : AppCompatActivity() {
+class HeadlinesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_headlines)
     }
 }
