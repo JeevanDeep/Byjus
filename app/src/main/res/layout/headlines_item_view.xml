@@ -11,13 +11,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_gradient_headlines_item_view">
+        android:layout_height="match_parent">
 
         <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/articleBackgroundImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
+        <View
+            android:background="@drawable/bg_gradient_headlines_item_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
         <TextView
             android:id="@+id/headlineTextView"
             android:layout_width="match_parent"
@@ -25,6 +29,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
+            android:textColor="#f2f2f2"
             android:ellipsize="end"
             android:fontFamily="@font/robotoslab_regular"
             android:maxLines="3"
@@ -45,5 +50,6 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

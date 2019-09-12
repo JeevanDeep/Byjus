@@ -1,6 +1,7 @@
 package com.jeevan.byjus
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.jeevan.byjus.di.ApplicationComponent
 import com.jeevan.byjus.di.ApplicationModule
 import com.jeevan.byjus.di.DaggerApplicationComponent
@@ -12,6 +13,7 @@ class ByjusApp : Application() {
         instance = this
 
         setupDagger()
+        Stetho.initializeWithDefaults(this)
     }
 
     private fun setupDagger() {
