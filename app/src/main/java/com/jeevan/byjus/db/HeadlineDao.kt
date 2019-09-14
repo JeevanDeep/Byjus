@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.jeevan.byjus.home.response.headlines.Article
+import com.jeevan.byjus.headlines.home.response.headlines.Article
 
 @Dao
 interface HeadlineDao {

@@ -1,4 +1,4 @@
-package com.jeevan.byjus.home
+package com.jeevan.byjus.headlines.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jeevan.byjus.R
-import com.jeevan.byjus.home.response.headlines.Article
+import com.jeevan.byjus.headlines.home.response.headlines.Article
 
 class HeadlinesAdapter(private val list: List<Article>) :
     RecyclerView.Adapter<HeadlinesAdapter.HeadlinesViewHolder>() {

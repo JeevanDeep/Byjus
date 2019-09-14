@@ -1,4 +1,4 @@
-package com.jeevan.byjus.home.response.headlines
+package com.jeevan.byjus.headlines.home.response.headlines
 
 
 import com.google.gson.annotations.SerializedName

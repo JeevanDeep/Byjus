@@ -1,10 +1,13 @@
-package com.jeevan.byjus.home.response.headlines
+package com.jeevan.byjus.headlines.home.response.headlines
 
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity
 data class Article(
     @PrimaryKey(autoGenerate = true)
@@ -25,4 +28,4 @@ data class Article(
     val url: String,
     @SerializedName("urlToImage")
     val urlToImage: String
-)
+) : Parcelable

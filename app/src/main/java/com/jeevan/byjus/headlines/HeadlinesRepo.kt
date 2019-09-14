@@ -1,6 +1,6 @@
 package com.jeevan.byjus.headlines
 
-import com.jeevan.byjus.home.response.headlines.HeadlinesListResponse
+import com.jeevan.byjus.headlines.home.response.headlines.HeadlinesListResponse
 import com.jeevan.byjus.network.ApiClient
 import com.jeevan.byjus.network.NetworkResult
 import javax.inject.Inject

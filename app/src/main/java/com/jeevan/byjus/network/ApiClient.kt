@@ -1,6 +1,6 @@
 package com.jeevan.byjus.network
 
-import com.jeevan.byjus.home.response.headlines.HeadlinesListResponse
+import com.jeevan.byjus.headlines.home.response.headlines.HeadlinesListResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

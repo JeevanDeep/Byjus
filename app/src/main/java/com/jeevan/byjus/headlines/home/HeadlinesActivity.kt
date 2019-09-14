@@ -1,4 +1,4 @@
-package com.jeevan.byjus.home
+package com.jeevan.byjus.headlines.home
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,7 @@ import com.jeevan.byjus.ByjusApp
 import com.jeevan.byjus.R
 import com.jeevan.byjus.di.ViewModelFactory
 import com.jeevan.byjus.headlines.HeadlinesViewModel
-import com.jeevan.byjus.home.response.headlines.Article
+import com.jeevan.byjus.headlines.home.response.headlines.Article
 import kotlinx.android.synthetic.main.activity_headlines.*
 import javax.inject.Inject
 
