@@ -27,7 +27,11 @@ class HeadlinesActivity : AppCompatActivity() {
         viewmodel.getHeadlines()
         viewmodel.headlinesList.observe(this) { list ->
             progressLayout.visibility = View.GONE
-            setupAdapter(list)
+            if (list == null) {
+                errorTextView.visibility = View.VISIBLE
+            } else {
+                setupAdapter(list)
+            }
         }
     }
 

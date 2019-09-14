@@ -13,8 +13,8 @@ import javax.inject.Inject
 class HeadlinesViewModel @Inject constructor(private val headlinesRepo: HeadlinesRepo) :
     ViewModel() {
 
-    private val _headlinesList = MutableLiveData<List<Article>>()
-    val headlinesList: LiveData<List<Article>>
+    private val _headlinesList = MutableLiveData<List<Article>?>()
+    val headlinesList: LiveData<List<Article>?>
         get() = _headlinesList
 
     fun getHeadlines() {
@@ -28,7 +28,7 @@ class HeadlinesViewModel @Inject constructor(private val headlinesRepo: Headline
 
                 is NetworkResult.Error -> {
                     if (response.exception !is CancellationException) {
-                        // todo handle error
+                        _headlinesList.value = null
                     }
                 }
             }
