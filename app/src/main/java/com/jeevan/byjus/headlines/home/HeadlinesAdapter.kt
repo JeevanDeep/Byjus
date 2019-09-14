@@ -7,11 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jeevan.byjus.R
 import com.jeevan.byjus.headlines.home.response.headlines.Article
 
-class HeadlinesAdapter(private val list: List<Article>) :
+class HeadlinesAdapter(private val list: List<Article>, private val onClick: (Article) -> Unit) :
     RecyclerView.Adapter<HeadlinesAdapter.HeadlinesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeadlinesViewHolder {
         val v =
@@ -39,7 +40,10 @@ class HeadlinesAdapter(private val list: List<Article>) :
             Glide.with(itemView)
                 .load(article.urlToImage)
                 .transition(DrawableTransitionOptions.withCrossFade())
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(backgroundImage)
+
+            itemView.setOnClickListener { onClick.invoke(article) }
         }
     }
 }
