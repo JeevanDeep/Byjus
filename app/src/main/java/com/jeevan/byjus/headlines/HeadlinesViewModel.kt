@@ -22,7 +22,7 @@ class HeadlinesViewModel @Inject constructor(private val headlinesRepo: Headline
             val response = headlinesRepo.getHeadlines()
             when (response) {
                 is NetworkResult.Success -> {
-                    val list = response.data.articles
+                    val list = response.data
                     _headlinesList.value = list
                 }
 

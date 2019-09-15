@@ -14,7 +14,4 @@ interface HeadlineDao {
 
     @Query("SELECT * FROM Article")
     suspend fun getAllHeadlines(): List<Article>
-
-    @Query("SELECT * FROM Article WHERE id = :id")
-    suspend fun getArticleById(id: Long): Article
 }

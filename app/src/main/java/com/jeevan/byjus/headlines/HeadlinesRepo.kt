@@ -1,7 +1,7 @@
 package com.jeevan.byjus.headlines
 
 import com.jeevan.byjus.db.HeadlineDao
-import com.jeevan.byjus.headlines.home.response.headlines.HeadlinesListResponse
+import com.jeevan.byjus.headlines.home.response.headlines.Article
 import com.jeevan.byjus.network.ApiClient
 import com.jeevan.byjus.network.NetworkResult
 import javax.inject.Inject
@@ -13,16 +13,21 @@ class HeadlinesRepo @Inject constructor(
     private val dao: HeadlineDao
 ) {
 
-    suspend fun getHeadlines(): NetworkResult<HeadlinesListResponse> {
-        var result: NetworkResult<HeadlinesListResponse>? = null
+    suspend fun getHeadlines(): NetworkResult<List<Article>> {
+        var result: NetworkResult<List<Article>>? = null
         runCatching {
             val response = apiClient.getHeadlines()
-            result = NetworkResult.Success(response)
             dao.insertHeadlines(response.articles)
+
+            val responseFromDb = dao.getAllHeadlines()
+            val list = mutableListOf<Article>()
+
+            list.addAll(responseFromDb)
+            result = NetworkResult.Success(list)
         }.onFailure {
             val responseFromDb = dao.getAllHeadlines()
             result = if (responseFromDb.isNotEmpty()) {
-                NetworkResult.Success(HeadlinesListResponse(responseFromDb, "", 0))
+                NetworkResult.Success(responseFromDb)
             } else {
                 NetworkResult.Error(it)
             }
