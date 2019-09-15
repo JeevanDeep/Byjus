@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jeevan.byjus.R
 import com.jeevan.byjus.headlines.home.response.headlines.Article
 import kotlinx.android.synthetic.main.activity_headline_detail.*
@@ -30,7 +31,11 @@ class HeadlineDetailActivity : AppCompatActivity() {
         articleHeadline.text = article.title
         sourceTextView.text = article.source.name
         articleDescription.text = article.description
-        Glide.with(this).load(article.urlToImage).into(headlinesImage)
+        Glide.with(this).load(article.urlToImage)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .placeholder(R.drawable.glide_placeholder)
+            .error(R.drawable.glide_placeholder)
+            .into(headlinesImage)
         backArrowBg.setOnClickListener { onBackPressed() }
     }
 

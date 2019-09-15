@@ -40,6 +40,7 @@ class HeadlinesAdapter(private val list: List<Article>, private val onClick: (Ar
             Glide.with(itemView)
                 .load(article.urlToImage)
                 .transition(DrawableTransitionOptions.withCrossFade())
+                .placeholder(R.drawable.glide_placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(backgroundImage)
 
