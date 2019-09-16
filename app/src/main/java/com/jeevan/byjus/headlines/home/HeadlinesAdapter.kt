@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jeevan.byjus.R
+import com.jeevan.byjus.Utils
 import com.jeevan.byjus.headlines.home.response.headlines.Article
 
 class HeadlinesAdapter(private val list: List<Article>, private val onClick: (Article) -> Unit) :
@@ -32,11 +33,11 @@ class HeadlinesAdapter(private val list: List<Article>, private val onClick: (Ar
         private val source: TextView = itemView.findViewById(R.id.sourceTextView)
         private val headline: TextView = itemView.findViewById(R.id.headlineTextView)
         private val backgroundImage: ImageView = itemView.findViewById(R.id.articleBackgroundImage)
-
+        private val date: TextView = itemView.findViewById(R.id.articleDate)
         fun bind(article: Article) {
             source.text = article.source.name
             headline.text = article.title
-
+            date.text = Utils.getFormattedDate(article.publishedAt)
             Glide.with(itemView)
                 .load(article.urlToImage)
                 .transition(DrawableTransitionOptions.withCrossFade())

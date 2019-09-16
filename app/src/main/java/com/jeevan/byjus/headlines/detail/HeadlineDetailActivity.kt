@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jeevan.byjus.R
+import com.jeevan.byjus.Utils
 import com.jeevan.byjus.headlines.home.response.headlines.Article
 import kotlinx.android.synthetic.main.activity_headline_detail.*
 
@@ -37,6 +38,7 @@ class HeadlineDetailActivity : AppCompatActivity() {
             .error(R.drawable.glide_placeholder)
             .into(headlinesImage)
         backArrowBg.setOnClickListener { onBackPressed() }
+        articleDate.text = Utils.getFormattedDate(article.publishedAt)
     }
 
     companion object {

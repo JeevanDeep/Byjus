@@ -14,14 +14,16 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:scaleType="centerCrop"
             android:id="@+id/articleBackgroundImage"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
         <View
-            android:background="@drawable/bg_gradient_headlines_item_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_gradient_headlines_item_view" />
+
         <TextView
             android:id="@+id/headlineTextView"
             android:layout_width="match_parent"
@@ -29,10 +31,10 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
-            android:textColor="#f2f2f2"
             android:ellipsize="end"
             android:fontFamily="@font/robotoslab_regular"
             android:maxLines="3"
+            android:textColor="#f2f2f2"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/sourceTextView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,5 +53,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:textColor="#bababa"
+            android:id="@+id/articleDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robotoslab_regular"
+            android:textSize="12sp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/sourceTextView"
+            app:layout_constraintTop_toTopOf="@id/sourceTextView"
+            app:layout_constraintStart_toEndOf="@id/sourceTextView"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
