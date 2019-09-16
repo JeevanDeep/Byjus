@@ -37,7 +37,7 @@ class HeadlinesActivity : AppCompatActivity() {
         if (savedInstanceState == null)
             viewmodel.getHeadlines()
         else {
-            val position = savedInstanceState.getInt("position")
+            val position = savedInstanceState.getInt(RECYCLERVIEW_ITEM_POSITION)
             headlinesRecyclerView.scrollToPosition(position)
         }
     }
@@ -45,7 +45,7 @@ class HeadlinesActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         val lm = headlinesRecyclerView.layoutManager as LinearLayoutManager
-        outState.putInt("position", lm.findFirstCompletelyVisibleItemPosition())
+        outState.putInt(RECYCLERVIEW_ITEM_POSITION, lm.findFirstCompletelyVisibleItemPosition())
     }
 
     private fun setupAdapter(list: List<Article>) {
@@ -53,5 +53,9 @@ class HeadlinesActivity : AppCompatActivity() {
             startActivity(HeadlineDetailActivity.newInstance(this, article))
         })
         headlinesRecyclerView.adapter = adapter
+    }
+
+    companion object {
+        private const val RECYCLERVIEW_ITEM_POSITION = "recyclerview item position"
     }
 }
