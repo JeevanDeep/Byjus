@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeevan.byjus.ByjusApp
 import com.jeevan.byjus.R
 import com.jeevan.byjus.di.ViewModelFactory
@@ -24,7 +25,6 @@ class HeadlinesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_headlines)
         ByjusApp.applicationComponent.inject(this)
 
-        viewmodel.getHeadlines()
         viewmodel.headlinesList.observe(this) { list ->
             progressLayout.visibility = View.GONE
             if (list == null) {
@@ -33,6 +33,19 @@ class HeadlinesActivity : AppCompatActivity() {
                 setupAdapter(list)
             }
         }
+
+        if (savedInstanceState == null)
+            viewmodel.getHeadlines()
+        else {
+            val position = savedInstanceState.getInt("position")
+            headlinesRecyclerView.scrollToPosition(position)
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val lm = headlinesRecyclerView.layoutManager as LinearLayoutManager
+        outState.putInt("position", lm.findFirstCompletelyVisibleItemPosition())
     }
 
     private fun setupAdapter(list: List<Article>) {
