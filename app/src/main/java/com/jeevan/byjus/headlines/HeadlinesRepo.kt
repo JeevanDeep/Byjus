@@ -1,6 +1,7 @@
 package com.jeevan.byjus.headlines
 
 import com.jeevan.byjus.db.HeadlineDao
+import com.jeevan.byjus.headlines.home.HeadlinesDataSource
 import com.jeevan.byjus.headlines.home.response.headlines.Article
 import com.jeevan.byjus.network.ApiClient
 import com.jeevan.byjus.network.NetworkResult
@@ -11,9 +12,9 @@ import javax.inject.Singleton
 class HeadlinesRepo @Inject constructor(
     private val apiClient: ApiClient,
     private val dao: HeadlineDao
-) {
+): HeadlinesDataSource {
 
-    suspend fun getHeadlines(): NetworkResult<List<Article>> {
+    override suspend fun getHeadlines(): NetworkResult<List<Article>> {
         var result: NetworkResult<List<Article>>? = null
         runCatching {
             val response = apiClient.getHeadlines()

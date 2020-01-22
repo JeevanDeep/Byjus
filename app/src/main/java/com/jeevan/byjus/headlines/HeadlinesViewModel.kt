@@ -4,13 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jeevan.byjus.headlines.home.HeadlinesDataSource
 import com.jeevan.byjus.headlines.home.response.headlines.Article
 import com.jeevan.byjus.network.NetworkResult
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class HeadlinesViewModel @Inject constructor(private val headlinesRepo: HeadlinesRepo) :
+class HeadlinesViewModel @Inject constructor(private val headlinesRepo: HeadlinesDataSource) :
     ViewModel() {
 
     private val _headlinesList = MutableLiveData<List<Article>?>()
